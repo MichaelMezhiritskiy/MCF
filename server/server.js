@@ -4,37 +4,31 @@ const path = require('path');
 const mongoose = require('mongoose');
 const userController = require('./userController');
 
-// mongoose.connect('mongodb+srv://Mike-Mezh:mikemezh123@cluster0.jqe2o95.mongodb.net/?retryWrites=true&w=majority'); //bad auth
-// mongoose.connection.once('open', () => {
-//     console.log('Connected to Database');
-// });
-// mongoose.connect('mongodb+srv://Mike-Mezh:michaelmezh123@cluster0.jqe2o95.mongodb.net/?retryWrites=true&w=majority', { //change pw and check in tomorrow
-//     // options for the connect method to parse the URI
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     // sets the name of the DB that our collections are part of
-//     dbName: 'MFCUserData',
-//   })
-//     .then(() => console.log('Connected to Mongo DB: CSF.'))
-//     .catch((err) => console.log(err));
+
+
+mongoose.connect('mongodb+srv://Mike-Mezh:michaelmezh123@mfcuserproject.upire0r.mongodb.net/?retryWrites=true&w=majority', { //change pw and check in tomorrow
+    // options for the connect method to parse the URI
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    // sets the name of the DB that our collections are part of
+    dbName: 'MFCUserData',
+  })
+    .then(() => console.log('Connected to Mongo DB: '))
+    .catch((err) => console.log(err));
   
 
 
 // app.use('/build', () => express.static(path.join(__dirname, '../build')));
-app.use(express.json());
+app.use(express.json()); //must have to send json post requests
 
 app.post('/signup', userController.createUser, (req, res) => {
     return res.status(200).json(res.locals.user);
 })
-
+//www.yoursite.com?myparam1={id1}&myparam2={id2}
+// `/login:?username=${username}&password={password}`
 app.get('/login', userController.verifyLogin, (req, res) => {
     return res.status(200).json(res.locals.user)
 });
-
-// app.post('/signup', (req, res) => {
-//     console.log('hello');
-//     return req.body;
-// })
 
 app.get('/', (req, res) => {
     return res.status(200).send('WE MADE IT');

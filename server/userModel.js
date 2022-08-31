@@ -7,9 +7,10 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     username: { type: String, required: true },
     password: { type: String, required: true },
+    favorites: [ { type: String } ], 
 });
 
-const MFCuser = mongoose.model('MFCusers', userSchema);
+const MFCuser = mongoose.model('MFCUsers', userSchema);
 
  module.exports = MFCuser;
 

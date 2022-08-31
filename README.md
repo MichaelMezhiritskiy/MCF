@@ -10,5 +10,9 @@ allow user to select favorites and store it in a /favorites tab
 use redux toolkit to manage state
 style the app
 
-# plan for connecting backend with frontend
+
+## rtk state goals
+only one state, a username
+when use logs in or signs up
+state username is changed to the username
 

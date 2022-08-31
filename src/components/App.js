@@ -9,14 +9,19 @@ export default function App() {
   return (
     <>
     {/* <Router> */}
-      <NavBar />
+      {/* <NavBar /> */}
     {/* </Router> */}
-    
-      <CoinDisplay />
+    <Login />
+      {/* <CoinDisplay /> */}
     
     </> 
   )
 };
+
+//todo
+//have the login page setup
+//redux toolkit
+
 
 
 //  <>

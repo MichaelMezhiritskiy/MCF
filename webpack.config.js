@@ -28,6 +28,7 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
+                exclude: /node_modules/,
                 use: ['style-loader', 'css-loader'],
             },
         ]
@@ -40,6 +41,16 @@ module.exports = {
         },
         compress: true,
         port: 8080,
+        proxy: {
+            '/signup': {
+                target: 'http://localhost:3000/',
+                secure: false,
+            },
+            '/login/**': {
+                target: 'http://localhost:3000/',
+                secure: false,
+            }, 
+        },
       }, 
 }
 

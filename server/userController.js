@@ -5,7 +5,7 @@ const userController = {
 
     createUser(req, res, next) {
         console.log('made it to createUser: ', req.body);
-        MFCuser.create([{ username: req.body.username, password: req.body.password}], (err, user) => {
+        MFCuser.create({ username: req.body.username, password: req.body.password, favorites: []}, (err, user) => {
             console.log('we are inside the create function');
             if (err) {
                 return next({
@@ -21,8 +21,8 @@ const userController = {
     },
 
     verifyLogin(req, res, next) {
-        console.log('made it to verify login');
-        MFCuser.findOne({ username: req.body.username, password: req.body.password}, (err, user) => {
+        console.log('made it to verify login: ', req.query);
+        MFCuser.findOne({ username: req.query.username, password: req.query.password}, (err, user) => {
             console.log('made it inside the find one: ', user);
             if (err) {
                 return next({
