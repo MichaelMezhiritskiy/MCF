@@ -24,7 +24,7 @@ const CoinDisplay = (props) => {
 
   return (
   <div style={{}}>
-    <h1 style={{display: 'flex', justifyContent: 'center'}}>My Favorite Cryptocurrencies!</h1>
+    <h1 style={{display: 'flex', justifyContent: 'center'}}>Mikes Cryptocurrency Forum!!!</h1>
     {topCoins}
   </div>
   );

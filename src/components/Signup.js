@@ -1,8 +1,13 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { submitUsername } from '../reducers/userNameSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+  const navigate = useNavigate();
+  const navToFavs = () => navigate('../favDisplay', { required: true });
+  const navToSign = () => navigate('../sign', { required: true } );
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     fetch('../signup', {
@@ -12,7 +17,14 @@ const Signup = () => {
       // redirect to landing page with welcome: username 
       // change username state to user
     })
-
+    .then(() => {
+      dispatch(submitUsername(document.getElementById('user').value))
+      return navToFavs();
+    })
+    .catch((err) => {
+      console.log(err);
+      return navToSign();
+    });
   };
   
   return (

@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 //in this case we are making a reducer to change the username
 
 const initialState = {
-    username: 'placeholder',
+    username: ', you are not logged in',
 };
 
 export const userNameSlice = createSlice({
