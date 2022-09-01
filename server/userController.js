@@ -38,28 +38,39 @@ const userController = {
     },
 
     addCrypto(req, res, next) {
-        MFCuser.findOneAndUpdate({ username: req.params.username}, { }, (req, res) =>  {
+        console.log('in add crypto middleware', req.body);
+        MFCuser.findOneAndUpdate({ username: req.body.username }, { favorites: req.body.favorites }, (err, user) =>  {
+            console.log('inside the find one and update');
         if (err) {
+            console.log(err);
             return next({
-                log: 'error in verify login middleware',
+                log: 'error in add crypto middleware',
                 status: 400,
-                message: { err: 'error in verify login middleware' }
+                message: { err: 'error in add crypto middleware' }
             });
-    }});
+        };
+        res.locals.user = user;
+        return next();
+        });
     },
-    
-    deleteCrypto(req, res, next) {
-        MFCuser.findOneAndDelete({ username: req.params.username }, { }, (req, res) => {
+
+    getFavorites(req, res, next) {
+        console.log('inside get favorites', req.query);
+        MFCuser.findOne({ username: req.query.username }, 'favorites', (err, user) => {
+            console.log('made it inside: ', user);
             if (err) {
                 return next({
-                    log: 'error in verify login middleware',
+                    log: 'error in get favorites middleware',
                     status: 400,
-                    message: { err: 'error in verify login middleware' }
+                    message: { err: 'error in add crypto middleware'}
                 });
-            }
+            };
+            res.locals.userFavorites = user;
+            return next();
         });
-
-    },
+    }
+    
+    
 
 }
 

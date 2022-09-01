@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Coin = props => {
-
+  
   return (
     <div clasName="coinbox" style={{display: 'flex', justifyContent:'space-evenly', border:'2px solid black', marginLeft: '25%', marginRight: '25%'}}>
         <span><img src={props.logo} style={{height:'75px', width:'75px'}}></img></span>
@@ -14,3 +14,13 @@ const Coin = props => {
 
 export default Coin;
 
+// const [clicked, setClicked] = useState(false);
+  // const handleClick = () => {
+  //   if (clicked) {
+  //     document.getElementById('box').styles.backgroundColor = 'lightgreen'
+  //     return setClicked(true);
+  //   } else {
+  //     document.getElementById('box').styles.backgroundColor = 'white';
+  //     return setClicked(false);
+  //   }
+  // };

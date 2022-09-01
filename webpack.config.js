@@ -50,6 +50,10 @@ module.exports = {
                 target: 'http://localhost:3000/',
                 secure: false,
             }, 
+            '/storeFavs': {
+                target: 'http://localhost:3000/',
+                secure: false,
+            }
         },
       }, 
 }

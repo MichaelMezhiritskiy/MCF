@@ -8,20 +8,18 @@ const initialState = {
 };
 
 export const favoriteSlice = createSlice({
-    name: 'favCryptos',
+    name: 'changeFav',
     initialState,
     reducers: {
-        addFavorite: (state, payload) => {
-            state.favorites.push(payload);
+        addFavorite: (state, action) => {
+            // console.log(action);
+            // state.favorites = state.favorites.push(action.payload).slice();
+            state.favorites.push(action.payload);
         },
-        removeFavorite: (state, payload) => {
-            let newArr = [];
-            for (const element of state) {
-                if (element !== payload) newArr.push(element);
-            }
-            state.favorites = newArr;
+        removeFavorite: (state, action) => {
+            state.favorites = state.favorites.filter((el) => el !== action.payload)
         },
-        reset: (state) => state.favorites = [],
+        reset: (state) => void(state.favorites = []),
     },
 });
 

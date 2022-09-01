@@ -30,6 +30,15 @@ app.get('/login', userController.verifyLogin, (req, res) => {
     return res.status(200).json(res.locals.user)
 });
 
+app.post('/storeFavs', userController.addCrypto, (req, res) => {
+    return res.status(200).json(res.locals.user);
+});
+
+app.get('/storeFavs', userController.getFavorites, (req, res) => {
+  console.log('in the server.js file: ', res.locals.userFavorites);
+  return res.status(200).json(res.locals.userFavorites);
+});
+
 app.get('/', (req, res) => {
     return res.status(200).send('WE MADE IT');
 });

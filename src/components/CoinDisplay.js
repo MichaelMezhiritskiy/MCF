@@ -3,12 +3,11 @@ import Coin from './Coin'
 
 const CoinDisplay = (props) => {
   const [topCoins, setTopCoins] = useState([]);
-  const [coins, setCoins] = useState([]);
 
   useEffect(() => {
     //,MATIC,ethereum,chainlink,dogecoin,cardano,shiba-inu
     const finalList = [];
-    fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coins}`)
+    fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=`)
     .then(response => response.json())
     // .then(response => console.log(response))
     .then((response) => {
@@ -23,7 +22,7 @@ const CoinDisplay = (props) => {
   }, [])
 
   return (
-  <div style={{}}>
+  <div>
     <h1 style={{display: 'flex', justifyContent: 'center'}}>Mikes Cryptocurrency Forum!!!</h1>
     {topCoins}
   </div>
