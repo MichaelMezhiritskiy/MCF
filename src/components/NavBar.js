@@ -1,8 +1,7 @@
 import React from 'react';
-import { useNavigate, Link, Route, Routes } from 'react-router-dom';
-import Login from './Login';
+import { useNavigate } from 'react-router-dom';
 import CoinDisplay from './CoinDisplay';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 export default function NavBar() {
   const navigate = useNavigate();
@@ -19,5 +18,3 @@ export default function NavBar() {
     </div>
   )
 }
-
-//style={{height: '100px', width: '100%', backgroundColor: 'purple', color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center'}}

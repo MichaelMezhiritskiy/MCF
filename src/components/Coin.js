@@ -14,13 +14,3 @@ const Coin = props => {
 
 export default Coin;
 
-// const [clicked, setClicked] = useState(false);
-  // const handleClick = () => {
-  //   if (clicked) {
-  //     document.getElementById('box').styles.backgroundColor = 'lightgreen'
-  //     return setClicked(true);
-  //   } else {
-  //     document.getElementById('box').styles.backgroundColor = 'white';
-  //     return setClicked(false);
-  //   }
-  // };

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { submitUsername } from '../reducers/userNameSlice'
 import { useNavigate } from 'react-router-dom';
@@ -7,28 +7,26 @@ function Login() {
   const navigate = useNavigate();
   const navToSign = () => navigate('../sign', { replace: true })
   const navToFavs = () => navigate('../favDisplay', { replace: true });
+  const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     fetch(`../login?username=${document.getElementById('user1').value}&password=${document.getElementById('pass1').value}`)
-    .then(() => {
-      dispatch(submitUsername(document.getElementById('user1').value));
-      return navToFavs();
+    .then(response => response.json())
+    .then((response) => {
+      console.log(response);
+      if (response.boo) {
+        dispatch(submitUsername(response.name));
+        return navToFavs();
+      } 
+      return navToSign(); 
     })
-    .catch((err) => {
-      console.log(err);
-      return navToSign();
-    });
-    //redirect to main page with welcome: username
-    //change username state to user
-    // dispatch(submitUsername(document.getElementById('user1').value))
+    .catch((err) => console.log(err));
   }
 
-  const handleSignup = (e) => {
+  const handleSignup = () => {
     return navToSign();
   }
 
-  const dispatch = useDispatch();
   const username = useSelector(state => state.setUser.username);
 
   return (

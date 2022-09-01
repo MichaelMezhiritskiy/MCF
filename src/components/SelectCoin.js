@@ -8,7 +8,6 @@ const SelectCoin = props => {
   const [clicked, setClicked] = useState(false);
   const dispatch = useDispatch();
   const handleClick = (e) => {
-    // console.log('clicked!', props.kei);
     
     if (!clicked) {
       dispatch(addFavorite(props.name));
@@ -21,9 +20,6 @@ const SelectCoin = props => {
     }
     setTimeout(console.log(checkState), 0);
   };
-  // console.log(props);
-  
-  
   
   return (
     <div id={props.kei} style={{display: 'flex', justifyContent:'space-evenly', border:'2px solid black', marginLeft: '25%', marginRight: '25%', backgroundColor: 'white'}}

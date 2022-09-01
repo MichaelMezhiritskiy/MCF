@@ -15,10 +15,7 @@ function Favorites() {
     const finalList = [];
     fetch(`../storeFavs?username=${username}`)
     .then(response => response.json())
-    // .then(response => console.log(response.favorites))
     .then((response) => {
-      // let data = response.favorites.join(',')
-      console.log(response.favorites);
       fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${response.favorites.join()}`)
       .then(data => data.json())
       .then(data => {

@@ -1,6 +1,5 @@
 import React from 'react'
 import FavoritesSelector from './FavoritesSelector';
-import coinDisplay from './CoinDisplay';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { reset } from '../reducers/favoriteSlice';
@@ -8,16 +7,13 @@ import { submitUsername } from '../reducers/userNameSlice';
 
 function FavNavBar() {
     const username = useSelector(state => state.setUser.username);
-    let checkState = useSelector(state => state.changeFav.favorites);
+    const checkState = useSelector(state => state.changeFav.favorites);
     const navigate = useNavigate();
     const navToFavs = () => navigate('../favDisplay', { replace: true } );
-    const navToSelector = () => navigate('../pickFavs', { replace: true } );
     const navToSign = () => navigate('../log', { replace: true });
     const dispatch = useDispatch();
 
     const handleSelectFavorites = () => {
-        //route to favorites page and send checkState to database
-        //send post request to 
         fetch('../storeFavs', {
             method: 'POST',
             body: JSON.stringify( { username: username, favorites: checkState } ),
