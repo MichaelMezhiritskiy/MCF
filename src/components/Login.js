@@ -24,8 +24,12 @@ function Login() {
     // dispatch(submitUsername(document.getElementById('user1').value))
   }
 
-    const dispatch = useDispatch();
-    const username = useSelector(state => state.setUser.username);
+  const handleSignup = (e) => {
+    return navToSign();
+  }
+
+  const dispatch = useDispatch();
+  const username = useSelector(state => state.setUser.username);
 
   return (
     <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center'}}>
@@ -35,7 +39,8 @@ function Login() {
         <h2>USERNAME: <input type="text" id="user1"></input></h2>
         <div>
         <h2>PASSWORD: <input type="text" id="pass1"></input></h2>
-        <button onClick={handleSubmit} style={{marginLeft: '80%'}}>SUBMIT</button>
+        <button onClick={handleSignup} style={{marginLeft: '5%'}}>SIGN UP</button>
+        <button onClick={handleSubmit} style={{marginLeft: '50%'}}>SUBMIT</button>
       </div>
       </div>
     </div>

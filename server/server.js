@@ -27,8 +27,12 @@ app.post('/signup', userController.createUser, (req, res) => {
 //www.yoursite.com?myparam1={id1}&myparam2={id2}
 // `/login:?username=${username}&password={password}`
 app.get('/login', userController.verifyLogin, (req, res) => {
-    return res.status(200).json(res.locals.user)
+    return res.status(200).json(res.locals.user);
 });
+
+app.delete('/login', userController.deleteUser, (req, res) => {
+  return res.status(200).json(res.locals.user);
+}); 
 
 app.post('/storeFavs', userController.addCrypto, (req, res) => {
     return res.status(200).json(res.locals.user);

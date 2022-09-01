@@ -10,9 +10,9 @@ function FavNavBar() {
     const username = useSelector(state => state.setUser.username);
     let checkState = useSelector(state => state.changeFav.favorites);
     const navigate = useNavigate();
-    const navToFavs = () => navigate('../favDisplay', { required: true } );
-    const navToSelector = () => navigate('../pickFavs', { required: true } );
-    const navToSign = () => navigate('../sign', { replace: true });
+    const navToFavs = () => navigate('../favDisplay', { replace: true } );
+    const navToSelector = () => navigate('../pickFavs', { replace: true } );
+    const navToSign = () => navigate('../log', { replace: true });
     const dispatch = useDispatch();
 
     const handleSelectFavorites = () => {
@@ -36,7 +36,7 @@ function FavNavBar() {
 
     const handleReset = () => {
         dispatch(reset());
-        return navToSelector();
+        window.location.reload(false);
     };
 
     const handleLogout = () => {

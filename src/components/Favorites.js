@@ -35,23 +35,38 @@ function Favorites() {
 
 
   const navToLogin = () => navigate('../log', { replace: true });
+
   const handleLogout = (e) => {
     dispatch(submitUsername('bruh'));
     return navToLogin();
   };
 
   const navToSelector = () => navigate('../pickFavs', { replace: true });
+
   const handleReSelect = (e) => {
     console.log('u clicked me');
     return navToSelector();
   };
 
+  const navToHome = () => navigate('../', { replace: true });
+
+  const handleDelete = () => {
+    fetch(`../login?username=${username}`, { method: 'DELETE' })
+    .then(() => console.log('delete successful'))
+    .then(() => {
+      dispatch(submitUsername('bruh, you just deleted your account'));
+    })
+    .catch(err => console.log(err));
+    return navToHome();
+  }
+
   return (
     <div>
-      <div clasName="nav" style={{height: '75px', width: '100%', backgroundColor: 'purple', color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+      <div clasName="nav" style={{height: '75px', width: '100%', backgroundColor: 'purple', color: 'white', display: 'flex', justifyContent: 'space-evenly', alignItems: 'center'}}>
         WELCOME {username}!
-        <button onClick={handleLogout}>LOGOUT</button>
         <button onClick={handleReSelect}>RE-SELECT FAVORITES</button>
+        <button onClick={handleDelete}>DELETE ACCOUNT</button>
+        <button onClick={handleLogout}>LOGOUT</button>
       </div>
         {selection}
     </div>

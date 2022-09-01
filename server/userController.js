@@ -68,6 +68,22 @@ const userController = {
             res.locals.userFavorites = user;
             return next();
         });
+    },
+
+    deleteUser(req, res, next) {
+        console.log('inside delete user', req.query);
+        MFCuser.findOneAndDelete({ username: req.query.username }, (err, user) => {
+            console.log('inside find one and delete: ', user);
+            if (err) {
+                return next({
+                    log: 'error in delete user middleware',
+                    status: 400,
+                    message: { err: 'error in delete user middleware'}
+                });
+            };
+            res.locals.user = user;
+            return next();
+        })
     }
     
     

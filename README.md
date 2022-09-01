@@ -1,18 +1,21 @@
-## mikes crypto forum
+## Mike's Cryptocurrency Forum
 
-## MVP
-display 10 highest market cap cryptos using a get request to etherscan api
-allow lookup for specific crypto in an input box using a post request to etherscan api
+## How To Use The Product
 
-## STRETCH
-allow user to sign up and setup database to authenticate user
-allow user to select favorites and store it in a /favorites tab
-use redux toolkit to manage state
-style the app
+- Install dependencies with `npm install`
+- Spin up both servers with `npm run dev`
+
+## Minimum Value Product
+
+- A CRUD app that allows a user to select his favorite cryptocurrencies from a list generated form an API request to CoinMarketCap API.
+- The user will be able to create an account on the sign up page and use the login page after he has signed up.
+- The user's favorite cryptocurrencies will be saved in the MongoDB database alongside his login information and displayed on the /favDisplay page
+- Additional functionalities include logging out, deleting existing account from database
 
 
-## rtk state goals
-only one state, a username
-when use logs in or signs up
-state username is changed to the username
+## Technologies (MERN)
+- Manually configured webpack to bundle the application and run client and server concurrently
+- React Router to architect component structure into pages
+- Redux toolkit to update global state from multiple components connected by React Router
+
 
